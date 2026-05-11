@@ -1,0 +1,5 @@
+miniconda3/
+shared_files/
+scholastic_posts.csv
+__pycache__/
+*.sh
