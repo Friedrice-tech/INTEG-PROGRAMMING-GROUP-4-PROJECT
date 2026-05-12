@@ -2,7 +2,7 @@ import streamlit as st
 from datetime import date
 import time
 
-# 1. Setup Session State (Persists tasks during the session)
+
 if 'tasks' not in st.session_state:
     st.session_state.tasks = [
         {"id": 1, "title": "Complete Project Proposal", "due": "2026-05-15", "status": "Pending"},
@@ -10,7 +10,6 @@ if 'tasks' not in st.session_state:
         {"id": 3, "title": "Read Chapter 3", "due": "2026-05-10", "status": "Completed"}
     ]
 
-# 2. Advanced CSS for a Professional Look
 st.markdown("""
     <style>
     /* Sleek Input Fields */
@@ -66,7 +65,7 @@ with head_left:
 with head_right:
     st.markdown("<div style='text-align: right; padding-top: 25px; color: #8b949e;'>👤 Student</div>", unsafe_allow_html=True)
 
-# --- ADD TASK SECTION ---
+
 with st.container(border=True):
     st.subheader("Add New Task")
     col_a, col_b = st.columns([3, 1])
@@ -75,10 +74,10 @@ with st.container(border=True):
     with col_b:
         new_date = st.date_input("Date", value=date.today(), label_visibility="collapsed")
     
-    # Logic for Adding Tasks with Unique Timestamp IDs
+    
     if st.button("Add Task", type="primary", use_container_width=True):
         if new_title:
-            # unique_id ensures no 'DuplicateElementKey' errors
+            
             unique_id = int(time.time()) 
             st.session_state.tasks.append({
                 "id": unique_id, 
@@ -90,9 +89,9 @@ with st.container(border=True):
         else:
             st.error("Please enter a task title!")
 
-# --- PENDING TASKS SECTION ---
+
 st.write("### Pending Tasks")
-# Use a copy of the list [:] to avoid index issues when removing items
+
 for task in st.session_state.tasks[:]:
     if task["status"] == "Pending":
         with st.container(border=True):
@@ -110,7 +109,7 @@ for task in st.session_state.tasks[:]:
                     st.session_state.tasks.remove(task)
                     st.rerun()
 
-# --- COMPLETED TASKS SECTION ---
+
 st.write("---")
 with st.expander("Show Completed Tasks"):
     for task in st.session_state.tasks[:]:

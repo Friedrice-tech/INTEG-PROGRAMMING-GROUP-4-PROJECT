@@ -37,7 +37,7 @@ st.markdown('<p class="hero-subtitle">Scholastic Hub: Your Academic buddy.</p>',
 st.markdown("Welcome back! Here is a quick overview of your academic progress.")
 st.divider()
 
-# --- TOP STATS (Metrics) ---
+
 col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.metric(label="Active Courses", value="5", delta="2 New")
@@ -48,7 +48,7 @@ with col3:
 with col4:
     st.metric(label="Days to Finals", value="14", delta_color="off")
 
-st.write("##") # Spacer
+st.write("##") 
 
 
 left_col, right_col = st.columns([2, 1])
